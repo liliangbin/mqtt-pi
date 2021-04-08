@@ -5,21 +5,21 @@
         <el-form>
           <el-form-item label="窗帘控制">
             <el-switch
-                v-model="window"
+                v-model="windows"
                 active-color="#13ce66"
             >
             </el-switch>
           </el-form-item>
           <el-form-item label="红外监控">
             <el-switch
-                v-model="person"
+                v-model="persons"
                 active-color="#13ce66"
             >
             </el-switch>
           </el-form-item>
           <el-form-item label="燃气控制">
             <el-switch
-                v-model="gas"
+                v-model="gass"
                 active-color="#13ce66"
             >
             </el-switch>
@@ -36,29 +36,30 @@ export default {
   name: "control",
   data() {
     return {
-      window: false,
-      gas: false,
-      person: false,
+      windows: true,
+      gass: true,
+      persons: true
     }
   },
   watch: {
-    window() {
+    windows() {
       // 发现代码变化就用这个
-      this.sockets.emit('publish', {
-        topic: 'window',
-        message: this.window
+      console.log('window changed')
+      this.$socket.emit('publish', {
+        topic: 'windows',
+        message: this.windows
       })
     },
-    gas() {
-      this.sockets.emit('publish', {
-        topic: 'gas',
-        message: this.gas
+    gass() {
+      this.$socket.emit('publish', {
+        topic: 'gass',
+        message: this.gass
       })
     },
-    person() {
-      this.$$sockets.emit('publish', {
-        topic: 'person',
-        message: this.person
+    persons() {
+      this.$socket.emit('publish', {
+        topic: 'persons',
+        message: this.persons
       })
     }
   }

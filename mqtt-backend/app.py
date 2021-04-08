@@ -36,14 +36,19 @@ def wevsocket():
 
 @socketio.on('publish', namespace='/test')
 def handle_publish(json_str):
-    data = json.loads(json_str)
+    # data = json.loads(json_str)
+    print(json_str)
+    data=json_str
     mqtt_ws.publish(data['topic'], data['message'])
 
 
 @socketio.on('subscribe', namespace='/test')
 def handle_subscribe(json_str):
-    print('get subscribe  message ')
-    data = json.loads(json_str)
+    print(json_str)
+    # data = json.loads(json_str)
+    data=json_str
+    print('get subscribe  message {}'.format(data['topic']))
+
     mqtt_ws.subscribe(data['topic'])
 
 

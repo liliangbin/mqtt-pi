@@ -17,7 +17,7 @@
         :direction="direction"
 
     >
-      <control :person="person" :gas="gas" :window="window"></control>
+      <control ></control>
     </el-drawer>
 
   </div>
@@ -82,6 +82,7 @@ export default {
     mqtt_message: (res) => {
       let topic = res.topic
       let message = res.payload
+      console.log('get message form topic ',topic,'  ',message)
       switch (topic) {
         case 'temp':
           this.temp = message;

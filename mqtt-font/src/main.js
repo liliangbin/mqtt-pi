@@ -10,7 +10,7 @@ axios.defaults.baseURL = process.env.NODE_ENV !== 'production' ? '/api' : 'http:
 Vue.config.productionTip = false
 Vue.use(new VueSocketIO({
     debug: true,
-    connection: '/api/test'
+    connection: 'http://localhost:8083/test'
 }))
 Vue.config.productionTip = false
 
